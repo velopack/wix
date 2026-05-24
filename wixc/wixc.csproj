@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>wixc7</AssemblyName>
+    <RootNamespace>wixc</RootNamespace>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+
+    <RuntimeIdentifiers>win-x64;win-arm64;win-x86</RuntimeIdentifiers>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <PublishTrimmed>true</PublishTrimmed>
+    <TrimMode>partial</TrimMode>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+
+    <RequiresNativeWixAssets>true</RequiresNativeWixAssets>
+
+    <SuppressTrimAnalysisWarnings>true</SuppressTrimAnalysisWarnings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\wix\WixToolset.Core\WixToolset.Core.csproj" />
+    <ProjectReference Include="..\src\wix\WixToolset.Core.WindowsInstaller\WixToolset.Core.WindowsInstaller.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" VersionOverride="2.0.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TrimmerRootAssembly Include="WixToolset.Core" />
+    <TrimmerRootAssembly Include="WixToolset.Core.WindowsInstaller" />
+    <TrimmerRootAssembly Include="WixToolset.Core.Native" />
+    <TrimmerRootAssembly Include="WixToolset.Data" />
+    <TrimmerRootAssembly Include="WixToolset.Extensibility" />
+    <TrimmerRootAssembly Include="WixToolset.Versioning" />
+  </ItemGroup>
+</Project>
